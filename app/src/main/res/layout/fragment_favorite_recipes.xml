@@ -42,12 +42,29 @@
         android:id="@+id/error_imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_sad"
         android:alpha="0.5"
+        android:src="@drawable/ic_sad"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recycler_receipt"
         app:layout_constraintStart_toStartOf="@+id/recycler_receipt"
-        app:layout_constraintTop_toTopOf="@+id/recycler_receipt" />
+        app:layout_constraintTop_toTopOf="@+id/recycler_receipt"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="0.5"
+        android:text="@string/no_internet_connection"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/error_imageView"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/error_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/error_imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
