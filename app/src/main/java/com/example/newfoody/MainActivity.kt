@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 //import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,28 +21,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = findNavController(R.id.navHostFragment)
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.recipesFregment,
-                R.id.favoriteRecipesFragment,
-                R.id.foodJokeFragment
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.navHostFragment)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
 
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.recipesFregment, R.id.favoriteRecipesFragment, R.id.foodJokeFragment
+        ).build()
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
 
     }
 }
