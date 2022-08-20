@@ -1,8 +1,8 @@
-package com.example.newfoody
+package com.example.newfoody.data
 
+import com.example.newfoody.data.network.FoodRecipesApi
 import com.example.newfoody.models.Antah
 import retrofit2.Response
-import java.time.temporal.TemporalQueries
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(

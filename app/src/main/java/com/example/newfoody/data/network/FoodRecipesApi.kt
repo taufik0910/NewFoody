@@ -1,4 +1,4 @@
-package com.example.newfoody
+package com.example.newfoody.data.network
 
 import com.example.newfoody.models.Antah
 import retrofit2.Response
