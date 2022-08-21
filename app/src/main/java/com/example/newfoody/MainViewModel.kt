@@ -15,10 +15,8 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import retrofit2.Response
 
-
 class MainViewModel @ViewModelInject constructor(
     private val repository: Repository,
-
     application: Application
 ) : AndroidViewModel(application) {
 
