@@ -5,19 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newfoody.databinding.RecipesRowLayoutBinding
-import com.example.newfoody.models.Antah
-import com.example.newfoody.models.D
+import com.example.newfoody.models.MovieTittleByTittle
+import com.example.newfoody.models.Result
 import com.example.newfoody.util.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
-    private var recipes = emptyList<D>()
+    private var recipes = emptyList<Result>()
 
     class MyViewHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(d: D) {
-            binding.dataD = d
+        fun bind(result: Result) {
+            binding.result = result
             binding.executePendingBindings()
         }
 
@@ -35,18 +35,18 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentResult = recipes[position]
-        holder.bind(currentResult)
+        val currentRecipe = recipes[position]
+        holder.bind(currentRecipe)
     }
 
     override fun getItemCount(): Int {
         return recipes.size
     }
 
-    fun setData(newData: Antah) {
-        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.d)
+    fun setData(newData: MovieTittleByTittle) {
+        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results)
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
-        recipes = newData.d
+        recipes = newData.results
         diffUtilResult.dispatchUpdatesTo(this)
 //        notifyDataSetChanged()
     }

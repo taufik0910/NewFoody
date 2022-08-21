@@ -1,6 +1,7 @@
 package com.example.newfoody.data.network
 
-import com.example.newfoody.models.Antah
+import androidx.compose.ui.text.style.TextDirection.Companion.Content
+import com.example.newfoody.models.MovieTittleByTittle
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -11,10 +12,10 @@ interface FoodRecipesApi {
 
     @Headers(
         "X-RapidAPI-Key:" + "077581ee37msh4c903e71207247bp1c5f1djsn6ee626762c20",
-        "X-RapidAPI-Host :" + "online-movie-database.p.rapidapi.com"
+        "Content-type:application/json"
     )
-    @GET("https://online-movie-database.p.rapidapi.com/auto-complete/")
+    @GET("https://moviesdatabase.p.rapidapi.com/titles/search/title/null")
    suspend fun getRecipes(
         @QueryMap queries: Map<String,String>
-    ) :Response<Antah>
+    ) :Response<MovieTittleByTittle>
 }
