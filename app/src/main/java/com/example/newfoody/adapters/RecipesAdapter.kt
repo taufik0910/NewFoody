@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newfoody.databinding.RecipesRowLayoutBinding
-import com.example.newfoody.models.MovieTittleByTittle
-import com.example.newfoody.models.Result
 import com.example.newfoody.util.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {

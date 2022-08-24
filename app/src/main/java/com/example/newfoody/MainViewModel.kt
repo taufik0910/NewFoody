@@ -9,7 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newfoody.data.Repository
-import com.example.newfoody.models.MovieTittleByTittle
+import com.example.newfoody.models.DataBerita
 import com.example.newfoody.util.NetworkResult
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -20,7 +20,7 @@ class MainViewModel @ViewModelInject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    var receipesResponse: MutableLiveData<NetworkResult<MovieTittleByTittle>> = MutableLiveData()
+    var receipesResponse: MutableLiveData<NetworkResult<DataBerita>> = MutableLiveData()
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
     }
@@ -39,7 +39,7 @@ class MainViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun handleFoodRecipesResponse(response: Response<MovieTittleByTittle>): NetworkResult<MovieTittleByTittle>? {
+    private fun handleFoodRecipesResponse(response: Response<DataBerita>): NetworkResult<DataBerita>? {
         when {
             response.message().toString().contains("timeout") -> {
                 return NetworkResult.Error("Timeout")
@@ -47,7 +47,7 @@ class MainViewModel @ViewModelInject constructor(
             response.code() == 402 -> {
                 return NetworkResult.Error("API KEY Limited.")
             }
-            response.body()!!.results.isNullOrEmpty() -> {
+            response.body()!!.articles.isNullOrEmpty() -> {
                 return NetworkResult.Error("recipes Not Found")
             }
             response.isSuccessful -> {
