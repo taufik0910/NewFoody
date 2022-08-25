@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recipesFregment"
-        android:name="com.example.newfoody.ui.fragment.recipes.RecipesFregment"
+        android:name="com.example.newfoody.ui.fragment.recipes.RecipesFragment"
         android:label="Recipes"
         tools:layout="@layout/fragment_recipes_fregment" />
     <fragment

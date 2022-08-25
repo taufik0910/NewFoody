@@ -4,18 +4,20 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newfoody.data.Repository
 import com.example.newfoody.models.DataBerita
 import com.example.newfoody.util.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import retrofit2.Response
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val repository: Repository,
     application: Application
 ) : AndroidViewModel(application) {
@@ -39,7 +41,7 @@ class MainViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun handleFoodRecipesResponse(response: Response<DataBerita>): NetworkResult<DataBerita>? {
+    private fun handleFoodRecipesResponse(response: Response<DataBerita>): NetworkResult<DataBerita> {
         when {
             response.message().toString().contains("timeout") -> {
                 return NetworkResult.Error("Timeout")
@@ -47,9 +49,7 @@ class MainViewModel @ViewModelInject constructor(
             response.code() == 402 -> {
                 return NetworkResult.Error("API KEY Limited.")
             }
-            response.body()!!.articles.isNullOrEmpty() -> {
-                return NetworkResult.Error("recipes Not Found")
-            }
+
             response.isSuccessful -> {
                 val foodRecipes = response.body()
                 return NetworkResult.Success(foodRecipes!!)

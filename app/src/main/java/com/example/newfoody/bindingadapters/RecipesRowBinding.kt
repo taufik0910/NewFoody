@@ -1,11 +1,20 @@
 package com.example.newfoody.bindingadapters
 
 import android.widget.ImageView
-import retrofit2.http.Url
+import androidx.databinding.BindingAdapter
+import coil.load
+
 
 class RecipesRowBinding {
 
     companion object{
-//        fun loadImageFromUrl(imageView: ImageView, imageUrl: String)
+        @BindingAdapter("loadImageFromUrl")
+        @JvmStatic
+        fun loadImageFromUrl(imageView: ImageView?, imageUrl: String?){
+            imageView?.load(imageUrl){
+                crossfade(600)
+            }
+
+      }
     }
 }
