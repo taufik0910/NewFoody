@@ -22,22 +22,22 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    var receipesResponse: MutableLiveData<NetworkResult<DataBerita>> = MutableLiveData()
+    var recipesResponse: MutableLiveData<NetworkResult<DataBerita>> = MutableLiveData()
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
     }
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
-        receipesResponse.value = NetworkResult.Loading()
+        recipesResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
                 val response = repository.remote.getRecipes(queries)
-                receipesResponse.value = handleFoodRecipesResponse(response)
+                recipesResponse.value = handleFoodRecipesResponse(response)
             } catch (e: Exception) {
-                receipesResponse.value = NetworkResult.Error("Recipes Not Found")
+                recipesResponse.value = NetworkResult.Error("Recipes Not Found")
             }
         } else {
-            receipesResponse.value = NetworkResult.Error("No Internet Connection")
+            recipesResponse.value = NetworkResult.Error("No Internet Connection")
         }
     }
 
