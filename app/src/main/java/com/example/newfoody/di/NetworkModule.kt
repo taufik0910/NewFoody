@@ -29,8 +29,6 @@ object NetworkModule {
     fun provideConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
-
-
     @Singleton
     @Provides
     fun provideRetrofitInstance(

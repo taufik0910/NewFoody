@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newfoody.MainViewModel
+import com.example.newfoody.viewModel.MainViewModel
 import com.example.newfoody.R
 import com.example.newfoody.adapters.RecipesAdapter
 import com.example.newfoody.util.Constants.Companion.API_KEY

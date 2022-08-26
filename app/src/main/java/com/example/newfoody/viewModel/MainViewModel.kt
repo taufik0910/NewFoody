@@ -1,4 +1,4 @@
-package com.example.newfoody
+package com.example.newfoody.viewModel
 
 import android.app.Application
 import android.content.Context
@@ -51,7 +51,7 @@ class MainViewModel @Inject constructor(
             }
 
             response.isSuccessful -> {
-                val foodRecipes = response.body()
+                val foodRecipes = response.body()!!
                 return NetworkResult.Success(foodRecipes!!)
             }
             else -> {
